@@ -7,25 +7,26 @@ class Coders_TEAM
     public static function handleRoute(\WP_REST_Request $request)
     {
         $args = array(
-            'post_type' => 'members',
-            'posts_per_page' => -1
-            // Several more arguments could go here. Last one without a comma.
+            'post_type'      => 'members',
+            'posts_per_page' => -1,
         );
-        $obituary_query = new \WP_Query($args);
+
+        $membersQuery = new \WP_Query($args);
 
         $members = array();
 
-        if ($obituary_query->have_posts()) {
-            while ($obituary_query->have_posts()) {
-                $obituary_query->the_post();
+        if ($membersQuery->have_posts()) {
+            while ($membersQuery->have_posts()) {
+                $membersQuery->the_post();
 
                 // Get custom fields or post data as needed
                 $member_data = array(
-                    'id'   => get_the_ID(),
-                    'name' => get_the_title(),
+                    'id'       => get_the_ID(),
+                    'name'     => get_the_title(),
                     'function' => get_the_excerpt(),
-                    'photo' => get_the_post_thumbnail_url(),
-                    'editor' => get_the_content()
+                    'photo'    => get_the_post_thumbnail_url(),
+                    'editor'   => get_the_content(),
+                    'post'     => self::get_post_terms_names('team-post'),
                 );
 
                 $members[] = $member_data;
@@ -39,5 +40,23 @@ class Coders_TEAM
         $response = new \WP_REST_Response($members, 200);
         $response->set_headers(['Cache-Control' => 'no-cache']);
         return $response;
+    }
+
+    /**
+     * Get the term names for a specific post and taxonomy.
+     *
+     * @param string $taxonomy The taxonomy name.
+     *
+     * @return array
+     */
+    private static function get_post_terms_names($taxonomy)
+    {
+        $terms = get_the_terms(get_the_ID(), $taxonomy);
+
+        if (!empty($terms) && !is_wp_error($terms)) {
+            return wp_list_pluck($terms, 'name');
+        }
+
+        return array();
     }
 }
