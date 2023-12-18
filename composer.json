@@ -1,0 +1,16 @@
+{
+	"name": "masterskill/coders",
+	"description": "\"This is a plugin for coders team that will be used in the website\"",
+	"autoload": {
+		"psr-4": {
+			"Coders\\": "src/"
+		}
+	},
+	"authors": [
+		{
+			"name": "Clairmont RAJAONARISON",
+			"email": "clairmont.rajaonarison@gmail.com"
+		}
+	],
+	"require": {}
+}
