@@ -4,7 +4,7 @@ namespace Coders;
 
 class Coders_TESTIMONIALS
 {
-    public static function handleRequest(\WP_REST_Request $request)
+    public static function handleRequest(\WP_REST_Request $request): \WP_REST_Response
     {
         $args = array(
             'post_type'      => 'testimonials',

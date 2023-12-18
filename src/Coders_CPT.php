@@ -12,11 +12,11 @@ class Coders_CPT
         'clients',
         'members',
     ];
-    public static function register()
+    public static function register(): void
     {
         add_action('init', [Coders_CPT::class, 'initiate_cpt']);
     }
-    public static function initiate_cpt()
+    public static function initiate_cpt(): void
     {
         $supports = ['title', 'editor', 'thumbnail', 'excerpt', 'author'];
 

@@ -4,7 +4,7 @@ namespace Coders;
 
 class Coders_TEAM
 {
-    public static function handleRequest(\WP_REST_Request $request)
+    public static function handleRequest(\WP_REST_Request $request): \WP_REST_Response
     {
         $args = array(
             'post_type'      => 'members',
@@ -49,7 +49,7 @@ class Coders_TEAM
      *
      * @return array
      */
-    private static function get_post_terms_names($taxonomy)
+    private static function get_post_terms_names($taxonomy): array
     {
         $terms = get_the_terms(get_the_ID(), $taxonomy);
 

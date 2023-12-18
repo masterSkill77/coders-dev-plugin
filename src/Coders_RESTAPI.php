@@ -6,7 +6,7 @@ use Coders\Coders_TEAM;
 
 class Coders_RESTAPI
 {
-    public static function register()
+    public static function register(): void
     {
         add_action('rest_api_init',  function () {
             register_rest_route('api/v1/', '/teams', [

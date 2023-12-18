@@ -4,12 +4,12 @@ namespace Coders;
 
 class Coders_TAXONOMIES
 {
-    public static function register()
+    public static function register(): void
     {
         add_action('after_setup_theme', [self::class, 'register_taxonomies_team']);
         add_action('after_setup_theme', [self::class, 'register_taxonomies_work']);
     }
-    public static function register_taxonomies_team()
+    public static function register_taxonomies_team(): void
     {
         register_taxonomy(
             'team-post', // The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
@@ -21,7 +21,7 @@ class Coders_TAXONOMIES
         );
     }
 
-    public static function register_taxonomies_work()
+    public static function register_taxonomies_work(): void
     {
         register_taxonomy(
             'work-categories', // The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
