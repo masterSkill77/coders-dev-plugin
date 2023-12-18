@@ -4,7 +4,7 @@ namespace Coders;
 
 class Coders_TEAM
 {
-    public static function handleRoute(\WP_REST_Request $request)
+    public static function handleRequest(\WP_REST_Request $request)
     {
         $args = array(
             'post_type'      => 'members',
