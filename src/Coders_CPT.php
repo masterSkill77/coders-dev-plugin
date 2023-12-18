@@ -5,7 +5,7 @@ namespace Coders;
 class Coders_CPT
 {
     public static array $custom_post_types = [
-        'services',
+        // 'services',
         'news',
         'works',
         'testimonials',
