@@ -20,14 +20,15 @@ class Coders_TESTIMONIALS
                 $testimonialsQuery->the_post();
 
                 // Get custom fields or post data as needed
-                $member_data = array(
+                $testimonial = array(
                     'id'       => get_the_ID(),
                     'client'     => get_the_title(),
-                    'content' => get_the_excerpt(),
+                    'title' => get_the_excerpt(),
+                    'description' => get_the_content(),
                     'photo'    => get_the_post_thumbnail_url(),
                 );
 
-                $testimonials[] = $member_data;
+                $testimonials[] = $testimonial;
             }
 
             // Reset post data
@@ -35,7 +36,7 @@ class Coders_TESTIMONIALS
         }
 
         // Create and return JSON response
-        $response = new \WP_REST_Response($members, 200);
+        $response = new \WP_REST_Response($testimonials, 200);
         $response->set_headers(['Cache-Control' => 'no-cache']);
         return $response;
     }
