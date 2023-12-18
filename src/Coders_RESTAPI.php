@@ -12,7 +12,13 @@ class Coders_RESTAPI
             register_rest_route('api/v1/', '/teams', [
                 'methods' => 'GET',
                 'callback' => fn (\WP_REST_Request $request)  =>
-                Coders_TEAM::handleRoute($request)
+                Coders_TEAM::handleRequest($request)
+
+            ]);
+            register_rest_route('api/v1/', '/testimonials', [
+                'methods' => 'GET',
+                'callback' => fn (\WP_REST_Request $request)  =>
+                Coders_TESTIMONIALS::handleRequest($request)
 
             ]);
         });
