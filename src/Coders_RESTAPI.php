@@ -13,13 +13,21 @@ class Coders_RESTAPI
                 'methods' => 'GET',
                 'callback' => fn (\WP_REST_Request $request)  =>
                 Coders_TEAM::handleRequest($request)
-
             ]);
             register_rest_route('api/v1/', '/testimonials', [
                 'methods' => 'GET',
                 'callback' => fn (\WP_REST_Request $request)  =>
                 Coders_TESTIMONIALS::handleRequest($request)
-
+            ]);
+            register_rest_route('api/v1/', '/portfolio', [
+                'methods' => 'GET',
+                'callback' => fn (\WP_REST_Request $request)  =>
+                Coders_PORTFOLIO::handleRequest($request)
+            ]);
+            register_rest_route('api/v1/', '/work-categories', [
+                'methods' => 'GET',
+                'callback' => fn (\WP_REST_Request $request)  =>
+                Coders_PORTFOLIO::getWorkCategoryTaxonomies($request)
             ]);
         });
     }
